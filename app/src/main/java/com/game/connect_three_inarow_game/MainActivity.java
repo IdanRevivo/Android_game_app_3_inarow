@@ -9,13 +9,21 @@ import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
 
+    int activeUser = 0;
+
     public void dropIn(View view){
 
         ImageView counter = (ImageView) view;
 
         counter.setTranslationY(-1500);
-
-        counter.setImageResource(R.drawable.yellow);
+        if (activeUser == 0) {
+            counter.setImageResource(R.drawable.yellow);
+            activeUser = 1;
+        }
+        else {
+            counter.setImageResource(R.drawable.red);
+            activeUser = 0;
+        }
 
         counter.animate().translationYBy(1500).setDuration(300);
 
